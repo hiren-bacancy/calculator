@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <style>
+            div.container{
+                border: 2px solid lightblue;
+                padding: 3%;
+                margin-left:30%;
+                margin-right: 39%;
+            }
+            input{
+                width: 65%;
+                padding: 10px;
+                margin: 10px;
+            }
+            td{
+                border: 1px solid black;
+                padding-left: 30px;
+                padding-top: 10px;
+                padding-right: 30px;
+                padding-bottom: 10px;
+                border-radius: 5px;
+            }
+            button{
+                background-color: white;
+                border-radius: 5px;
+                border: 1px solid black;
+                width: 73px;
+                height: 42px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <input type="text" id="in" value="">
+            <button onclick="clea()">CLEAR</button>
+            <table>
+                <tr>
+                    <td onclick="num(7)">7</button></td>
+                    <td onclick="num(8)">8</td>
+                    <td onclick="num(9)">9</td>
+                    <td onclick="division()">/</td>
+                </tr>
+                <tr>
+                    <td onclick="num(4)">4</td>
+                    <td onclick="num(5)">5</td>
+                    <td onclick="num(6)">6</td>
+                    <td onclick="mul()">*</td>
+                </tr>
+                <tr>
+                    <td onclick="num(1)">1</td>
+                    <td onclick="num(2)">2</td>
+                    <td onclick="num(3)">3</td>
+                    <td onclick="sub()">-</td>
+                </tr>
+                <tr>
+                    <td onclick="num(0)">0</td>
+                    <td onclick="point()">.</td>
+                    <td onclick="ans()">=</td>
+                    <td onclick="add()">+</td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            var a='';
+            function num(i){
+              a=a+""+i;
+              document.getElementById("in").value=a; 
+            }
+
+            function division(){
+                a=a+""+" "+"/"+" ";
+                document.getElementById("in").value=a;
+            }
+
+            function mul(){
+                a=a+""+" "+"*"+" ";
+                document.getElementById("in").value=a;
+            }
+
+            function sub(){
+                a=a+""+" "+"-"+" ";
+                document.getElementById("in").value=a;
+            }
+
+            function point(){
+                a=a+""+".";
+                document.getElementById("in").value=a;    
+            }
+
+            function add(){
+                a=a+""+" "+"+"+" ";
+                document.getElementById("in").value=a;
+            }
+
+            function ans(){
+                var x = "";
+                var b = a.split(" ");
+                var j=0;
+                while(j<b.length){
+                    if(b[j+1]=='/'){
+                        x = b[j]/b[j+2];
+                    }
+                    else if(b[j+1]=='*'){
+                        x = b[j]*b[j+2];
+                    }
+                    else if(b[j+1]=='-'){
+                        x = b[j]-b[j+2];
+                    }
+                    else if(b[j+1]=='+'){
+                        x = parseFloat(b[j])+parseFloat(b[j+2]);
+                    }
+
+                    if(j+2 == b.length)
+                    {
+                       j=j+1;
+                    }
+                    j=j+2;
+                }
+                document.getElementById("in").value=x;
+                a='';
+            }
+            function clea(){
+                document.getElementById("in").value='';
+                a='';
+            }
+        </script>
+    </body>
+</html>
